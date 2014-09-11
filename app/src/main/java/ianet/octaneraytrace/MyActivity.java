@@ -52,15 +52,21 @@ public class MyActivity extends Activity {
     // Pulled from the Octane sources
     static int MIN_ITERATIONS = 32;
     static long REFERENCE_SCORE = 739989;
+    static Thread thread;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        final TextView tv = (TextView) findViewById(R.id.textview);
-        tv.append("Raytrace...\r\n");
         int id = item.getItemId();
 
         if (id == R.id.action_run) {
-            new Thread(new Runnable() { @Override public void run() {
+            final TextView tv = (TextView) findViewById(R.id.textview);
+            
+            if (thread != null && thread.isAlive()) {
+                return true;
+            }
+
+            tv.append("Raytrace...\r\n");
+            thread = new Thread() { @Override public void run() {
                 // Warmup
                 Measure(null);
                 // Benchmark
@@ -81,7 +87,8 @@ public class MyActivity extends Activity {
                     tv.append("Score: " + score + "\r\n");
                     tv.append("Done\r\n\r\n");
                 }});
-            }}).start();
+            }};
+            thread.start();
             return true;
         }
 
