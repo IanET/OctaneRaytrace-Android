@@ -60,7 +60,7 @@ public class MyActivity extends Activity {
 
         if (id == R.id.action_run) {
             final TextView tv = (TextView) findViewById(R.id.textview);
-            
+
             if (thread != null && thread.isAlive()) {
                 return true;
             }
