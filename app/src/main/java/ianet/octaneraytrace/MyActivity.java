@@ -1,6 +1,7 @@
 package ianet.octaneraytrace;
 
 import android.app.Activity;
+import android.graphics.Canvas;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -55,7 +56,7 @@ public class MyActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         final TextView tv = (TextView) findViewById(R.id.textview);
-        tv.append("\r\n");
+        tv.append("Raytrace...\r\n");
         int id = item.getItemId();
 
         if (id == R.id.action_run) {
@@ -70,7 +71,7 @@ public class MyActivity extends Activity {
                     final long elapsed = data.elapsed;
                     final long runs = data.runs;
                     tv.post(new Runnable() { @Override public void run() {
-                        tv.append("Runs: " + runs + ", Elapsed: " + elapsed + ", \r\n");
+                        tv.append("Runs: " + runs + ", Elapsed: " + elapsed + "\r\n");
                     }});
                 }
                 long usec = (data.elapsed * 1000) / data.runs;
@@ -78,6 +79,7 @@ public class MyActivity extends Activity {
                 // tv.append("Result: " + formated);
                 tv.post(new Runnable() { @Override public void run() {
                     tv.append("Score: " + score + "\r\n");
+                    tv.append("Done\r\n\r\n");
                 }});
             }}).start();
             return true;
