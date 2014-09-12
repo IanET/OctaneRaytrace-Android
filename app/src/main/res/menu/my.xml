@@ -1,8 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MyActivity" >
-    <item android:id="@+id/action_run"
-        android:title="@string/action_run"
+    <item android:id="@+id/action_benchmark"
+        android:title="@string/action_benchmark"
+        android:orderInCategory="100"
+        android:showAsAction="never" />
+    <item android:id="@+id/action_render"
+        android:title="@string/action_render"
         android:orderInCategory="100"
         android:showAsAction="never" />
 </menu>

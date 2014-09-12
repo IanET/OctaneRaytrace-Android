@@ -1,9 +1,9 @@
 package ianet.octaneraytrace.Flog;
 
 public class Color {
-    double red;
-    double green;
-    double blue;
+    public double red;
+    public double green;
+    public double blue;
 
     public Color(double r, double g, double b) {
         this.red = r;

@@ -34,11 +34,7 @@ public class Engine {
 
     public void renderScene(Scene scene, Canvas canvas) {
         this.checkNumber = 0;
-
-        /* Get canvas */
-        if (canvas == null) {
-            this.canvas = Canvas.getContext("2d");
-        }
+        this.canvas = canvas;
 
         int canvasHeight = this.options.canvasHeight;
         int canvasWidth = this.options.canvasWidth;
@@ -55,7 +51,7 @@ public class Engine {
                 this.setPixel(x, y, color);
             }
         }
-        if (checkNumber != 2321) {
+        if (this.canvas == null && checkNumber != 2321) {
             throw new RuntimeException("Scene rendered incorrectly");
         }
     }

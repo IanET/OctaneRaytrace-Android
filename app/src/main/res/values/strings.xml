@@ -3,6 +3,6 @@
 
     <string name="app_name">OctaneRaytrace</string>
     <string name="hello_world">Raytrace</string>
-    <string name="action_run">Run</string>
-
+    <string name="action_benchmark">Benchmark</string>
+    <string name="action_render">Render</string>
 </resources>

@@ -7,7 +7,7 @@ import ianet.octaneraytrace.Flog.Material.*;
 // The ray tracer code in this file was originally written by Adam Burmister.
 public class RayTracer {
 
-    public static void renderScene() {
+    public static void renderScene(Canvas canvas) {
         Scene scene = new Scene();
 
         scene.camera = new Camera(new Vector3D(0, 0, -15), new Vector3D(-0.2, 0, 5), new Vector3D(0, 1, 0));
@@ -26,10 +26,18 @@ public class RayTracer {
         scene.lights.add(light1);
 
         EngineOptions options = new EngineOptions();
-        options.canvasWidth = 100;
-        options.canvasHeight = 100;
-        options.pixelWidth = 5;
-        options.pixelHeight = 5;
+
+        if (canvas != null) {
+            options.canvasWidth = 750;
+            options.canvasHeight = 750;
+            options.pixelWidth = 1;
+            options.pixelHeight = 1;
+        } else {
+            options.canvasWidth = 100;
+            options.canvasHeight = 100;
+            options.pixelWidth = 5;
+            options.pixelHeight = 5;
+        }
         options.renderDiffuse = true;
         options.renderHighlights = true;
         options.renderShadows = true;
@@ -37,6 +45,6 @@ public class RayTracer {
         options.rayDepth = 2;
 
         Engine raytracer = new Engine(options);
-        raytracer.renderScene(scene, null);
+        raytracer.renderScene(scene, canvas);
     }
 }
